@@ -25,7 +25,7 @@ from pprint import pprint
 import json
 
 id_page = '2209124'
-token = '25ac26e8098a9c1110e6693533c1c3c7295f3b600f4bbc7b1d3bbf39a06fbf57e71f02cdd02b05d748c01'
+token = ''
 
 url = 'https://api.vk.com/method/users.get?user_ids=' + id_page + '&fields=bdate&access_token=' + token + '&v=5.131'
 
