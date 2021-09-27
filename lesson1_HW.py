@@ -1,0 +1,40 @@
+# 1. Посмотреть документацию к API GitHub, разобраться как вывести список репозиториев для конкретного пользователя, сохранить JSON-вывод в файле *.json.
+
+import requests
+from json import dumps
+from pprint import pprint
+import json
+username = 'maratborodin'
+
+url = 'https://api.github.com'
+
+request = requests.get(url + '/users/' + username + '/repos')
+#j_data = request.json()
+
+with open('lesson1_HW_ex1.json', 'w') as f:
+  json.dump(request.json(), f)
+
+for i in request.json():
+    print(i['name'])
+
+# 2. Изучить список открытых API. Найти среди них любое, требующее авторизацию (любого типа). Выполнить запросы к нему, пройдя авторизацию. Ответ сервера записать в файл.
+
+import requests
+from json import dumps
+from pprint import pprint
+import json
+
+id_page = '2209124'
+token = '25ac26e8098a9c1110e6693533c1c3c7295f3b600f4bbc7b1d3bbf39a06fbf57e71f02cdd02b05d748c01'
+
+url = 'https://api.vk.com/method/users.get?user_ids=' + id_page + '&fields=bdate&access_token=' + token + '&v=5.131'
+
+response = requests.get(url)
+j_data = response.json()
+
+#pprint(j_data)
+
+with open('lesson1_HW_ex2.json', 'w') as f:
+    json.dump(j_data, f)
+
+
