@@ -21,6 +21,8 @@ headers = {'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/
 vacancy_number = 1
 page = 0
 
+vacancies = []
+
 while True:
     response = requests.get(url, params=params, headers=headers)
     soup = bs(response.text, 'html.parser')
@@ -28,8 +30,6 @@ while True:
     vacancy_list = soup.find_all('div', attrs={'class': 'vacancy-serp-item'})
 
     button_next = soup.find('a', text='дальше')
-
-    vacancies = []
 
     for vacancy in vacancy_list:
         vacancy_data = {}
